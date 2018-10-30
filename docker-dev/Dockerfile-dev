@@ -1,0 +1,14 @@
+# Pull base image.
+FROM atom-kobuta-base:latest
+
+COPY ["logging-kobuta.sample.json", "/etc/atom/logging-kobuta.json"]
+COPY ["data/atom-kobuta.conf", "/etc/atom/atom-kobuta.conf"]
+COPY ["supervisor-uwsgi.conf", "supervisor-worker.conf", "wsgi.py", "manage.py", "initdb.py", "/opt/atom/"]
+RUN \
+  ln -s /opt/atom/supervisor-uwsgi.conf /etc/supervisor/conf.d/ && \
+  ln -s /opt/atom/supervisor-worker.conf /etc/supervisor/conf.d/
+COPY ["./atomkobuta", "/opt/atom/atomkobuta"]
+COPY ["./alembic", "/opt/atom/alembic"]
+COPY ["alembic.ini", "/opt/atom/"]
+CMD ["supervisord", "-n"]
+
