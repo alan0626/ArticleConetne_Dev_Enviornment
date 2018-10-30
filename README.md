@@ -10,8 +10,8 @@
 
 Get this repository
 ```sh
-$ git clone <GitHub_Source_Code>
-$ cd atom-kobuta-dev
+$ git clone <GitHub_Dev_repo>
+$ cd BreakTime_Dev
 ```
 
 The script will install necessary packages and docker. After installation, please logout the system and reconnect to server again.
@@ -22,7 +22,7 @@ $ logout
 
 Start to build up development environment
 ```sh
-$ ./build-dev-env.sh
+$ ./build-docker-images.sh
 ```
 
 After compete the image build, you can easy start the docker development.
