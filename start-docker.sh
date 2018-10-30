@@ -1,5 +1,6 @@
 #!/bin/bash -x
 
+# MAC OS need to install this command to use realpath: brew install coreutils
 curDir=$(dirname "$(realpath $0)")
 
 # Create self docker network
@@ -8,7 +9,9 @@ docker network create dev-net
 # Create postgresql container and restore sample data
 docker run --net=dev-net --name postgresql -e POSTGRES_PASSWORD=atom -d -p 5432:5432 postgres:9.5
 sleep 10
-PGPASSWORD=atom psql -U postgres -h localhost < atom-kobuta/data/postgresql/init.sql
+
+# MAC OS need to download postgresql APP from postgres offical website.
+PGPASSWORD=atom /Applications/Postgres.app/Contents/Versions/10/bin/psql -U postgres -h localhost < atom-kobuta/data/postgresql/init.sql
 
 # Create redis server
 docker run --net=dev-net --name redis -d redis:4.0
