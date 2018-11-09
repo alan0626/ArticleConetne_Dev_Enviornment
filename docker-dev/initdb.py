@@ -1,6 +1,6 @@
-from atomkobuta.factory import create_app
-from atomkobuta.model import db
-from atomkobuta.model import svs, hips
+from breakarticle.factory import create_app
+from breakarticle.model import db
+from breakarticle.model import svs, hips
 
 app = create_app()
 with app.app_context():

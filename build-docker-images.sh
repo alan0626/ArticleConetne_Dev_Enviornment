@@ -4,7 +4,7 @@
 curDir=$(dirname "$(realpath $0)")
 
 # Clean-up old image if existed.
-for image_name in atom-kobuta-dev atom-kobuta-base
+for image_name in break-article-dev break-article-base
 do
     if [ $(docker images $image_name -q | wc -l) == "1" ]; then
         docker rmi $image_name
@@ -12,13 +12,13 @@ do
     fi
 done
 
-# Clone atom-kobuta project and dev package into it
+# Clone break-article project and dev package into it
 cd $curDir
 #git clone <GitHub_Source_Code>
-cp -R docker-dev/* atom-kobuta
+cp -R docker-dev/* break-article
 
 # Build base and dev docker images
-cd $curDir/atom-kobuta
-docker build -t atom-kobuta-base .
-docker build -t atom-kobuta-dev -f Dockerfile-dev .
+cd $curDir/break-article
+docker build -t break-article-base .
+docker build -t break-article-dev -f Dockerfile-dev .
 
