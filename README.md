@@ -35,7 +35,7 @@ This may take few minutes to complete then you can see the docker containers run
 ```sh
 $ docker ps -a
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                           NAMES
-4dbbd78e5965        nginx:1.10.3-alpine   "nginx -g 'daemon of…"   31 minutes ago      Up 31 minutes       443/tcp, 0.0.0.0:8080->80/tcp   nginx
+4dbbd78e5965        nginx:1.10.3-alpine   "nginx -g 'daemon of…"   31 minutes ago      Up 31 minutes       443/tcp, 0.0.0.0:80->80/tcp   nginx
 2b95ab84045b        article-dev       "/docker-entrypoint.…"   31 minutes ago      Up 31 minutes       8700/tcp                        article-dev
 48e7f8408883        redis:4.0             "docker-entrypoint.s…"   31 minutes ago      Up 31 minutes       6379/tcp                        redis
 ```
@@ -61,8 +61,8 @@ or
 $ docker exec -it article-dev /bin/bash
 ```
 
-You may also access the article API directly to 127.0.0.1:8080
+You may also access the article API directly to 127.0.0.1:80
 ```sh
-$ curl -X POST 'http://localhost:8080/v0/hips/dpi/callback2' -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d 'API testing'
+$ curl -X POST 'http://localhost:80/v0/hips/dpi/callback2' -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d 'API testing'
 {"data":{},"message":"OK"}
 ```
